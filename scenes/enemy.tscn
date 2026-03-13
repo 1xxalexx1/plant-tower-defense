@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://plx80ojevuer"]
+
+[ext_resource type="Script" uid="uid://cluxtevyrc2bd" path="res://scripts/enemy.gd" id="1_7p1mj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8tegq"]
+height = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p1mj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8tegq"]
+height = 2.5
+
+[node name="enemy" type="CharacterBody3D" unique_id=1787441504]
+script = ExtResource("1_7p1mj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=22746645]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1444326131]
+shape = SubResource("CapsuleShape3D_8tegq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1192354383]
+material_override = SubResource("StandardMaterial3D_7p1mj")
+mesh = SubResource("CapsuleMesh_8tegq")
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

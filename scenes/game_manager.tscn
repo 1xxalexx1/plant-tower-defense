@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bnb4lq7rhewf1"]
+
+[ext_resource type="Script" uid="uid://b4rg3ucf2qt21" path="res://scripts/game_manager.gd" id="1_glms7"]
+[ext_resource type="PackedScene" uid="uid://cfprhhu1klbqj" path="res://art/map layout.blend" id="1_hwd4i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hwd4i"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_glms7"]
+sky_material = SubResource("ProceduralSkyMaterial_hwd4i")
+
+[sub_resource type="Environment" id="Environment_udu3i"]
+background_mode = 2
+sky = SubResource("Sky_glms7")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_glms7"]
+
+[node name="game_manager" type="Node3D" unique_id=1311325550 node_paths=PackedStringArray("cam1", "cam2")]
+script = ExtResource("1_glms7")
+cam1 = NodePath("map layout/Camera3D")
+cam2 = NodePath("map layout/Camera3D2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=23436867]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=328481490]
+environment = SubResource("Environment_udu3i")
+
+[node name="map layout" parent="." unique_id=2081508741 instance=ExtResource("1_hwd4i")]
+
+[node name="Plane_001" parent="map layout" index="1" unique_id=262217196]
+visible = false
+
+[node name="Cube" parent="map layout" index="2" unique_id=1901766089]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="map layout" unique_id=88235208]
+transform = Transform3D(-0.6249702, -0.59347713, 0.5071461, 0, 0.6496471, 0.7602359, -0.78064865, 0.47512478, -0.4060101, 2.9101727, 4.0125914, 7.0411243)
+
+[node name="Camera3D2" type="Camera3D" parent="map layout" unique_id=1512051490]
+transform = Transform3D(-0.6249702, -0.59347713, 0.5071461, 0, 0.6496471, 0.7602359, -0.78064865, 0.47512478, -0.4060101, -6.6085005, 4.0125914, 7.0411243)
+
+[node name="Camera3D3" type="Camera3D" parent="map layout" unique_id=1013114071]
+transform = Transform3D(-0.16719872, 0.4778318, -0.8623928, -0.061497204, 0.8679481, 0.4928328, 0.9840034, 0.13543576, -0.115734495, -8.918921, 4.0125914, 1.4874587)
+
+[node name="Camera3D4" type="Camera3D" parent="map layout" unique_id=1989685293]
+transform = Transform3D(0.6979355, 0.39037344, -0.60041213, -0.061497193, 0.8679481, 0.49283284, 0.71351534, -0.30704188, 0.6297787, -7.9765835, 4.0125914, -1.6462955)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1350458936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.345922, 1.7990589, 9.818857)
+mesh = SubResource("BoxMesh_glms7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1844163084]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1362575803]
+offset_top = 486.0
+offset_right = 1157.0
+offset_bottom = 594.0
+theme_override_constants/separation = 15
+
+[node name="cam1" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=319331035]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CAM 1"
+
+[node name="cam2" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1516662828]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CAM 2"
+
+[node name="cam3" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1683975390]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CAM 3"
+
+[node name="cam4" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=790805152]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CAM 4"
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/cam1" to="." method="_on_cam_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/cam2" to="." method="_on_cam_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/cam3" to="." method="_on_cam_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/cam4" to="." method="_on_cam_4_pressed"]
+
+[editable path="map layout"]

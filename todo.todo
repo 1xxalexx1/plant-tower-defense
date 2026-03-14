@@ -1,2 +1,2 @@
-☐ fix enemy pathing - right now its waiting for way too long, make it somehow use the target_desired_distance paramater which is broken right now.
+✔ fix enemy pathing - right now its waiting for way too long, make it somehow use the target_desired_distance paramater which is broken right now. @done(26-03-14 13:00)
 ☐ make the enemy track to a position instead of moving randomly

@@ -4,22 +4,23 @@ extends CharacterBody3D
 @export var SPEED = 10.0
 @export var lookahead_distance: float = 3.0
 
-#states
+#state variables
 enum State {
 	IDLE,
 	WAITING_TO_MOVE,
 	MOVE
 }
-
 var state: State = State.IDLE
 
 #timer
-var idle_wait_time: float = 0.1
+var idle_wait_time: float = 1.5
 var idle_timer_count: float = 0
 
 #node refferences
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
+
+#functions
 func _physics_process(delta: float) -> void:
 	velocity += get_gravity() * delta
 
@@ -28,6 +29,7 @@ func _physics_process(delta: float) -> void:
 		State.WAITING_TO_MOVE: _on_waiting_to_move(delta)
 		State.MOVE: _on_move()
 
+	print(state)
 	move_and_slide()
 
 func _on_idle():
@@ -49,6 +51,7 @@ func _on_move():
 	# set next target early so path is already computed when we arrive
 	var dist = global_transform.origin.distance_to(navigation_agent.target_position)
 	if dist < lookahead_distance:
+
 		navigation_agent.target_position = _get_safe_target()
 
 	var current_position = global_transform.origin
@@ -62,9 +65,15 @@ func _on_navigation_agent_3d_target_reached() -> void:
 	navigation_agent.target_position = _get_safe_target()
 
 func _get_safe_target() -> Vector3:
-	var target = get_new_target_location()
-	var nav_map = navigation_agent.get_navigation_map()
-	return NavigationServer3D.map_get_closest_point(nav_map, target)
+	# var target = get_new_target_location()
+	# var nav_map = navigation_agent.get_navigation_map()
+	# return NavigationServer3D.map_get_closest_point(nav_map, target)
+	var locations = Global.get_room_locations()
+	if locations.is_empty():
+		return global_transform.origin
+	var ran_index = randi_range(0, locations.size() - 1)
+	return (locations[ran_index] as Marker3D).global_position
+
 
 func get_new_target_location() -> Vector3:
 	var offset_x = randf_range(0.5, 10.0) * (-1 if randf() < 0.5 else 1)

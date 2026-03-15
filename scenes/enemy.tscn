@@ -13,6 +13,7 @@ height = 2.5
 
 [node name="enemy" type="CharacterBody3D" unique_id=1787441504]
 script = ExtResource("1_7p1mj")
+lookahead_distance = 1.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=22746645]
 avoidance_enabled = true

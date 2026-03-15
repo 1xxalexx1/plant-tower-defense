@@ -29,7 +29,7 @@ data = PackedVector3Array(0.8182, 0, -0.8182, 1, 0, -1, 1, 0, -0.8182, 0.8182, 0
 
 [node name="game_manager" type="Node3D" unique_id=1311325550 node_paths=PackedStringArray("cameras")]
 script = ExtResource("1_glms7")
-cameras = [NodePath("cameras/Camera3D"), NodePath("cameras/Camera3D2"), NodePath("cameras/Camera3D3"), NodePath("cameras/Camera3D4"), NodePath("cameras/Camera3D5")]
+cameras = [NodePath("cameras/Camera3D"), NodePath("cameras/Camera3D2"), NodePath("cameras/Camera3D3"), NodePath("cameras/Camera3D4"), NodePath("cameras/Camera3D5"), NodePath("cameras/Camera3D6"), NodePath("cameras/Camera3D7"), NodePath("cameras/Camera3D8")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=23436867]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -45,9 +45,10 @@ SPEED = 5.0
 [node name="UI" type="CanvasLayer" parent="." unique_id=1844163084]
 
 [node name="buttons" type="HBoxContainer" parent="UI" unique_id=1362575803]
-offset_top = 486.0
-offset_right = 1157.0
-offset_bottom = 594.0
+offset_left = 2.0
+offset_top = 723.0
+offset_right = 1668.0
+offset_bottom = 859.0
 theme_override_constants/separation = 15
 
 [node name="cam1" type="Button" parent="UI/buttons" unique_id=319331035]
@@ -70,7 +71,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "CAM 4"
 
-[node name="cam5" type="Button" parent="UI/buttons" unique_id=1307715780]
+[node name="cam5" type="Button" parent="UI/buttons" unique_id=315658748]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CAM 5"
+
+[node name="cam6" type="Button" parent="UI/buttons" unique_id=2134410950]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CAM 6"
+
+[node name="cam7" type="Button" parent="UI/buttons" unique_id=920983292]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "CAM 7"
+
+[node name="cam_debug" type="Button" parent="UI/buttons" unique_id=1307715780]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "Topdown (debug)"
@@ -87,10 +103,19 @@ transform = Transform3D(-0.6249702, -0.59347713, 0.5071461, 0, 0.6496471, 0.7602
 transform = Transform3D(-0.16719872, 0.4778318, -0.86239284, -0.061497204, 0.8679481, 0.49283284, 0.9840034, 0.13543576, -0.115734495, -8.918921, 4.0125914, 1.4874587)
 
 [node name="Camera3D4" type="Camera3D" parent="cameras" unique_id=1989685293]
-transform = Transform3D(0.6979355, 0.39037344, -0.60041213, -0.061497193, 0.8679481, 0.49283287, 0.71351534, -0.30704188, 0.6297787, -7.9765835, 4.0125914, -1.6462955)
+transform = Transform3D(0.6979355, 0.39037344, -0.6004121, -0.061497193, 0.8679481, 0.49283284, 0.71351534, -0.30704188, 0.6297786, -7.9765835, 4.0125914, -1.6462955)
 
 [node name="Camera3D5" type="Camera3D" parent="cameras" unique_id=439085173]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 22.903862, 0)
+transform = Transform3D(1, 0, 0, 0, -2.9802326e-08, 1, 0, -1, -2.9802326e-08, -9.536743e-07, 22.903862, -2.861023e-06)
+
+[node name="Camera3D6" type="Camera3D" parent="cameras" unique_id=311994906]
+transform = Transform3D(0.7669981, -0.2602675, 0.5864936, -0.1855818, 0.7849936, 0.59105366, -0.61422586, -0.56217957, 0.55378765, 8.068261, 4.0125914, 12.906761)
+
+[node name="Camera3D7" type="Camera3D" parent="cameras" unique_id=369572180]
+transform = Transform3D(0.9737352, -0.21224354, 0.082416646, 0.06998169, 0.62345105, 0.7787242, -0.21666193, -0.7525035, 0.6219294, 9.507013, 4.0125914, -7.1369877)
+
+[node name="Camera3D8" type="Camera3D" parent="cameras" unique_id=1075792370]
+transform = Transform3D(-0.9946088, -0.0119848875, -0.10300322, -0.0726159, 0.78959805, 0.60931265, 0.0740286, 0.61350745, -0.78621143, -11.0516, 4.0125914, -12.841528)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=692390583]
 navigation_mesh = SubResource("NavigationMesh_udu3i")
@@ -103,13 +128,39 @@ shape = SubResource("ConcavePolygonShape3D_udu3i")
 
 [node name="map layout" parent="NavigationRegion3D/StaticBody3D" unique_id=1475466922 instance=ExtResource("1_hwd4i")]
 
-[node name="Plane" parent="NavigationRegion3D/StaticBody3D/map layout" index="0" unique_id=1445014666]
+[node name="Plane" parent="NavigationRegion3D/StaticBody3D/map layout" index="0" unique_id=646872365]
 transform = Transform3D(12.984414, 0, -0.034219816, 0, 12.984459, 0, 0.034219816, 0, 12.984414, 0, 0.14202227, 0)
+
+[node name="Markers" type="Node3D" parent="NavigationRegion3D" unique_id=60695913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4014974, 9.891487)
+
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=1254464861]
+
+[node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=589524640 groups=["room_locations"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.371523, 0, 0)
+
+[node name="Marker3D3" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=797387057 groups=["room_locations"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.912415, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=2097390525 groups=["room_locations"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.780195, 0, -20.792198)
+
+[node name="Marker3D5" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=550423492 groups=["room_locations"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8319626, 0, -20.792198)
+
+[node name="Marker3D6" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=992557740 groups=["room_locations"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.322296, 0, -7.560198)
+
+[node name="Marker3D7" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=1655440771 groups=["room_locations"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141384, 0, -19.77687)
 
 [connection signal="pressed" from="UI/buttons/cam1" to="." method="_on_cam_1_pressed"]
 [connection signal="pressed" from="UI/buttons/cam2" to="." method="_on_cam_2_pressed"]
 [connection signal="pressed" from="UI/buttons/cam3" to="." method="_on_cam_3_pressed"]
 [connection signal="pressed" from="UI/buttons/cam4" to="." method="_on_cam_4_pressed"]
 [connection signal="pressed" from="UI/buttons/cam5" to="." method="_on_cam_5_pressed"]
+[connection signal="pressed" from="UI/buttons/cam6" to="." method="_on_cam_6_pressed"]
+[connection signal="pressed" from="UI/buttons/cam7" to="." method="_on_cam_7_pressed"]
+[connection signal="pressed" from="UI/buttons/cam_debug" to="." method="_on_cam_debug_pressed"]
 
 [editable path="NavigationRegion3D/StaticBody3D/map layout"]

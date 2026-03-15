@@ -1,2 +1,4 @@
 ✔ fix enemy pathing - right now its waiting for way too long, make it somehow use the target_desired_distance paramater which is broken right now. @done(26-03-14 13:00)
-☐ make the enemy track to a position instead of moving randomly
+✔ make the enemy track to a position instead of moving randomly @done(26-03-15 21:24)
+☐ ?make sure multiple enemies dont pick the same target?
+☐ build tower defense mechanics

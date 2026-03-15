@@ -14,10 +14,18 @@ config/name="lights-cameras-action"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://h5yxvq74kwkm"
+
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+
+[global_group]
+
+room_locations=""
 
 [input]
 

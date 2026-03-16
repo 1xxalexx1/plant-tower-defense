@@ -15,27 +15,20 @@ func switch_to_camera(index: int) -> void:
 	cameras[index].current = true
 	active_index = index
 
+#camera buttons
 func _on_cam_1_pressed() -> void:
 	switch_to_camera(0)
-
 func _on_cam_2_pressed() -> void:
 	switch_to_camera(1)
-
 func _on_cam_3_pressed() -> void:
 	switch_to_camera(2)
-
 func _on_cam_4_pressed() -> void:
 	switch_to_camera(3)
-
 func _on_cam_5_pressed() -> void:
 	switch_to_camera(5)
-
 func _on_cam_6_pressed() -> void:
 	switch_to_camera(6)
-
 func _on_cam_7_pressed() -> void:
 	switch_to_camera(7)
-
-
 func _on_cam_debug_pressed() -> void:
 	switch_to_camera(4)

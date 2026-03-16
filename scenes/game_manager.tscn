@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b4rg3ucf2qt21" path="res://scripts/game_manager.gd" id="1_glms7"]
 [ext_resource type="PackedScene" uid="uid://cfprhhu1klbqj" path="res://art/map layout.blend" id="1_hwd4i"]
 [ext_resource type="PackedScene" uid="uid://plx80ojevuer" path="res://scenes/enemy.tscn" id="2_udu3i"]
+[ext_resource type="PackedScene" uid="uid://bdccfiemn2mmo" path="res://scenes/turret.tscn" id="4_oo155"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hwd4i"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -134,7 +135,12 @@ transform = Transform3D(12.984414, 0, -0.034219816, 0, 12.984459, 0, 0.034219816
 [node name="Markers" type="Node3D" parent="NavigationRegion3D" unique_id=60695913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4014974, 9.891487)
 
-[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=1254464861]
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=1254464861 groups=["room_locations"]]
+
+[node name="turret" parent="NavigationRegion3D/Markers/Marker3D" unique_id=1864509447 node_paths=PackedStringArray("raycast_reference", "enemy_reference") instance=ExtResource("4_oo155")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+raycast_reference = NodePath("RayCast3D")
+enemy_reference = NodePath("../../../../enemy")
 
 [node name="Marker3D2" type="Marker3D" parent="NavigationRegion3D/Markers" unique_id=589524640 groups=["room_locations"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.371523, 0, 0)
@@ -164,3 +170,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141384, 0, -19.77687)
 [connection signal="pressed" from="UI/buttons/cam_debug" to="." method="_on_cam_debug_pressed"]
 
 [editable path="NavigationRegion3D/StaticBody3D/map layout"]
+[editable path="NavigationRegion3D/Markers/Marker3D/turret"]

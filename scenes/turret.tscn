@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bdccfiemn2mmo"]
+
+[ext_resource type="Script" uid="uid://bk0gptmq0obw7" path="res://scenes/turret.gd" id="1_x3mc5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fowog"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fowog"]
+height = 2.971
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3mc5"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x3mc5"]
+
+[node name="turret" type="Node3D" unique_id=1864509447]
+script = ExtResource("1_x3mc5")
+
+[node name="3d_model" type="Node3D" parent="." unique_id=415144757]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3d_model" unique_id=359508094]
+material_override = SubResource("StandardMaterial3D_fowog")
+mesh = SubResource("CapsuleMesh_fowog")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="3d_model" unique_id=383246196]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0.49507964)
+material_override = SubResource("StandardMaterial3D_x3mc5")
+mesh = SubResource("CapsuleMesh_x3mc5")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=660064010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5315597, 1.2567298)
+target_position = Vector3(0, 0, 5)

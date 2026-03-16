@@ -2,3 +2,8 @@
 ✔ make the enemy track to a position instead of moving randomly @done(26-03-15 21:24)
 ☐ ?make sure multiple enemies dont pick the same target?
 ☐ build tower defense mechanics
+    ☐ build turret
+        ☐ make it scan across the room
+        ☐ make it detect the enemy and lock on to its position
+        ☐ make the enemy react
+        ☐ build upgrades

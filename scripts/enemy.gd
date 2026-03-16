@@ -1,14 +1,15 @@
 extends CharacterBody3D
 
 #consts
-@export var SPEED = 10.0
+@export var SPEED = 1.0
 @export var lookahead_distance: float = 3.0
 
 #state variables
 enum State {
 	IDLE,
 	WAITING_TO_MOVE,
-	MOVE
+	MOVE,
+	ATTACKING
 }
 var state: State = State.IDLE
 
@@ -29,7 +30,6 @@ func _physics_process(delta: float) -> void:
 		State.WAITING_TO_MOVE: _on_waiting_to_move(delta)
 		State.MOVE: _on_move()
 
-	print(state)
 	move_and_slide()
 
 func _on_idle():
@@ -59,7 +59,8 @@ func _on_move():
 	var direction = (next_position - current_position).normalized()
 	var new_velocity = direction * SPEED
 	new_velocity.y = velocity.y  # preserve gravity
-	velocity = velocity.lerp(new_velocity, 0.25)
+	#velocity = velocity.lerp(new_velocity, 0.25)
+	velocity = new_velocity
 
 func _on_navigation_agent_3d_target_reached() -> void:
 	navigation_agent.target_position = _get_safe_target()
@@ -74,11 +75,10 @@ func _get_safe_target() -> Vector3:
 	var ran_index = randi_range(0, locations.size() - 1)
 	return (locations[ran_index] as Marker3D).global_position
 
+func _on_attack() -> void:
+	pass
 
 func get_new_target_location() -> Vector3:
 	var offset_x = randf_range(0.5, 10.0) * (-1 if randf() < 0.5 else 1)
 	var offset_z = randf_range(0.5, 10.0) * (-1 if randf() < 0.5 else 1)
 	return global_transform.origin + Vector3(offset_x, 0, offset_z)
-
-func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-	velocity = velocity.lerp(safe_velocity, 0.1)
